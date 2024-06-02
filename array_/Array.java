@@ -1,11 +1,57 @@
 import java.util.*;
 
 public class Array {
-    public int[] insertAtPosition(int[] arr, int pos){
+    public int[] deleteAtPosition(int[] arr){
+        Scanner input = null;
+    
+        try {
+            input = new Scanner(System.in);
+            System.out.println("What is the position ?");
+            int pos = input.nextInt();
+
+            int[] newArr = new int[arr.length-1];
+
+            for(int i=0;i<newArr.length;i++){
+                if(i >= pos-1){
+                    newArr[i] = arr[i+1];
+                    continue;
+                }
+                newArr[i] = arr[i];
+            }
+            return newArr;
+
+        } finally {
+            if(input != null){
+                input.close();
+            }
+        }
+    }
+
+    public int[] deleteAtBegining(int[] arr){
+        int[] newArr = new int[arr.length-1];
+
+        for(int i=0;i<newArr.length;i++){
+            newArr[i] = arr[i+1];
+        }
+        return newArr;
+    }
+
+    public int[] deleteAtEnd(int[] arr){
+        int[] newArr = new int[arr.length-1];
+
+        for(int i=0;i<newArr.length;i++){
+            newArr[i] = arr[i];
+        }
+        return newArr;
+    }
+
+    public int[] insertAtPosition(int[] arr){
         Scanner input = null;
         
         try {
             input = new Scanner(System.in);
+            System.out.println("What is the position ?");
+            int pos = input.nextInt();
             System.out.println("Input your new value:");
             int newValue = input.nextInt();
 
@@ -90,12 +136,17 @@ public class Array {
 
         // create object...
         Array ob = new Array();
+
+        // insert.....
         // arr1 = ob.insertAtEnd(arr1);
         // arr1 = ob.insertAtBegining(arr1);
 
-        System.out.println("What is the position ?");
-        int pos = input.nextInt();
-        arr1 = ob.insertAtPosition(arr1,pos);
+        // arr1 = ob.insertAtPosition(arr1);
+
+        // delete.....
+        // arr1 = ob.deleteAtEnd(arr1);
+        // arr1 = ob.deleteAtBegining(arr1);
+        arr1 = ob.deleteAtPosition(arr1);
 
         System.out.println(Arrays.toString(arr1));
         // System.out.println(Arrays.toString(arr2));
